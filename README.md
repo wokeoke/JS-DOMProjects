@@ -94,7 +94,7 @@ const clearBtn = document.querySelector('.clear-btn');
 // EDIT OPTION
 let editElement;
 let editFlag = false;
-let editId = '';
+let editID = '';
 ```
 
 ##
@@ -250,7 +250,7 @@ function addToLocalStorage(id, value) {
 function setBackToDefault() {
   grocery.value = '';
   editFlag = false;
-  editId = '';
+  editID = '';
   submitBtn.textContent = 'submit';
 }
 ```
@@ -371,5 +371,59 @@ function deleteItem(e) {
 // remove from local storage
 function removeFromLocalStorage(id) {
   console.log('removed from local storage');
+}
+```
+
+##
+
+- #### Edit Item
+- Target the \<p> element to get inner HTML value
+- console.log(e.currentTarget.parentElement.previousElementSibling)
+
+```html
+<!-- devtools console -->
+
+<p class="title">item</p>
+```
+
+- Edit item function
+- Put edit item value into grocery input element
+
+```js
+// edit function
+function editItem(e) {
+  const element = e.currentTarget.parentElement.parentElement;
+  // set edit item
+  editElement = e.currentTarget.parentElement.previousElementSibling;
+  // set form value
+  grocery.value = editElement.innerHTML;
+  editFlag = true;
+  editID = element.dataset.id;
+  submitBtn.textContent = 'edit';
+}
+```
+
+- Write inside the **else if (value && editFlag)** statement
+
+```js
+  } else if (value && editFlag) {
+    editElement.innerHTML = value;
+    displayAlert('value changed', 'success');
+    // edit local storage
+    // editLocalStorage(editID, value);
+    setBackToDefault();
+  } else {
+```
+
+- Edit the local storage function
+- Passing edit id and new value
+
+```js
+// remove from local storage
+.
+.
+// edit local storage
+function editLocalStorage(id, value) {
+  console.log('edit local storage');
 }
 ```

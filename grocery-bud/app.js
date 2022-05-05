@@ -10,7 +10,7 @@ const clearBtn = document.querySelector('.clear-btn');
 // EDIT OPTION
 let editElement;
 let editFlag = false;
-let editId = '';
+let editID = '';
 
 // EVENT LISTENERS
 // submit form
@@ -63,7 +63,11 @@ function addItem(e) {
     // set back to default
     setBackToDefault();
   } else if (value && editFlag) {
-    console.log('update item');
+    editElement.innerHTML = value;
+    displayAlert('value changed', 'success');
+    // edit local storage
+    // editLocalStorage(editID, value);
+    setBackToDefault();
   } else {
     displayAlert('Please enter value', 'danger');
   }
@@ -111,15 +115,23 @@ function deleteItem(e) {
 }
 
 // edit function
-function editItem() {
-  console.log('edit item');
+function editItem(e) {
+  const element = e.currentTarget.parentElement.parentElement;
+  // set edit item
+  editElement = e.currentTarget.parentElement.previousElementSibling;
+  console.log(editElement);
+  // set form value
+  grocery.value = editElement.innerHTML;
+  editFlag = true;
+  editID = element.dataset.id;
+  submitBtn.textContent = 'edit';
 }
 
 // set back to default
 function setBackToDefault() {
   grocery.value = '';
   editFlag = false;
-  editId = '';
+  editID = '';
   submitBtn.textContent = 'submit';
 }
 
@@ -132,6 +144,11 @@ function addToLocalStorage(id, value) {
 // remove from local storage
 function removeFromLocalStorage(id) {
   console.log('removed from local storage');
+}
+
+// edit local storage
+function editLocalStorage(id, value) {
+  console.log('edit local storage');
 }
 
 // SETUP ITEMS
