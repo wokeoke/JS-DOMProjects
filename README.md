@@ -328,3 +328,48 @@ function editItem() {
 }
 
 ```
+
+##
+
+- #### Delete Item
+- Target the \<article> element to get **data-id** attribute
+- console.log(e.currentTarget.parentElement.parentElement)
+
+```html
+<!-- devtools console -->
+
+<article class="grocery-item" data-id="1651747229181">
+  <!-- title & action buttons -->
+</article>
+```
+
+- Delete item function
+
+```js
+// delete function
+function deleteItem(e) {
+  const element = e.currentTarget.parentElement.parentElement;
+  const id = element.dataset.id;
+  list.removeChild(element);
+
+  if (list.children.length === 0) {
+    container.classList.remove('show-container');
+  }
+
+  displayAlert('item removed', 'danger');
+  // remove from local storage
+  // removeFromLocalStorage(id);
+}
+```
+
+- Set remove from local storage function
+
+```js
+// add to local storage
+.
+.
+// remove from local storage
+function removeFromLocalStorage(id) {
+  console.log('removed from local storage');
+}
+```
