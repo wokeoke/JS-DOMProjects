@@ -476,3 +476,24 @@ function removeFromLocalStorage(id) {
   // console.log('item removed from local storage');
 }
 ```
+
+##
+
+- #### Edit Item from Local Storage
+- edit local storage function
+
+```js
+// edit local storage
+function editLocalStorage(id, value) {
+  let items = getLocalStorage();
+
+  items = items.map(function (item) {
+    if (item.id === id) {
+      item.value = value;
+    }
+    return item;
+  });
+  localStorage.setItem('list', JSON.stringify(items));
+  // console.log('edit item local storage');
+}
+```
