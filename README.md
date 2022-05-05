@@ -243,7 +243,7 @@ function addToLocalStorage(id, value) {
 ##
 
 - #### Set Back to Default
-- Reset all value when hit submit button
+- Reset all values when hit submit button
 
 ```js
 // set back to default
@@ -252,5 +252,37 @@ function setBackToDefault() {
   editFlag = false;
   editId = '';
   submitBtn.textContent = 'submit';
+}
+```
+
+##
+
+- #### Clear Items
+- Remove all items when hit the clear button
+
+```js
+// EVENT LISTENERS
+// submit form
+.
+.
+// clear items
+clearBtn.addEventListener('click', clearItems);
+.
+.
+// display alert
+.
+.
+// clear items
+function clearItems() {
+  const items = document.querySelectorAll('.grocery-item');
+
+  if (items.length > 0) {
+    items.forEach(function (item) {
+      list.removeChild(item);
+    });
+  }
+  container.classList.remove('show-container');
+  displayAlert('items cleared', 'danger');
+  // localStorage.removeItem('list')
 }
 ```

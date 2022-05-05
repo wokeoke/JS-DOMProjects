@@ -16,6 +16,9 @@ let editId = '';
 // submit form
 form.addEventListener('submit', addItem);
 
+// clear items
+clearBtn.addEventListener('click', clearItems);
+
 // FUNCTIONS
 function addItem(e) {
   e.preventDefault();
@@ -70,6 +73,20 @@ function displayAlert(text, action) {
     alert.textContent = '';
     alert.classList.remove(`alert-${action}`);
   }, 1800);
+}
+
+// clear items
+function clearItems() {
+  const items = document.querySelectorAll('.grocery-item');
+
+  if (items.length > 0) {
+    items.forEach(function (item) {
+      list.removeChild(item);
+    });
+  }
+  container.classList.remove('show-container');
+  displayAlert('items cleared', 'danger');
+  // localStorage.removeItem('list')
 }
 
 // set back to default
