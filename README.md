@@ -6,7 +6,20 @@
 
 ### Grocery Bud Project
 
+- #### Project Structure
+
+```sh
+grocery-bud
+├─ app.js
+├─ index.html
+├─ logo.svg
+└─ style.css
+```
+
+###
+
 - #### HTML
+- index.html
 
 ```html
 <!DOCTYPE html>
@@ -64,7 +77,10 @@
 </html>
 ```
 
+###
+
 - #### Select Elements
+- app.js
 
 ```js
 // SELECT ITEMS
@@ -81,3 +97,35 @@ let editElement;
 let editFlag = false;
 let editId = '';
 ```
+
+###
+
+- #### Add Item Setup
+- app.js
+
+```js
+// EDIT OPTION
+.
+.
+// EVENT LISTENERS
+// submit form
+form.addEventListener('submit', addItem);
+
+// FUNCTIONS
+function addItem(e) {
+  e.preventDefault();
+
+  const value = grocery.value;
+  const id = new Date().getTime().toString();
+
+  if (value !== '' && editFlag === false) {
+    console.log('add new item');
+  } else if (value !== '' && editFlag === true) {
+    console.log('update item');
+  } else {
+    console.log('empty value');
+  }
+}
+```
+
+---

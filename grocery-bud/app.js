@@ -13,8 +13,24 @@ let editFlag = false;
 let editId = '';
 
 // EVENT LISTENERS
+// submit form
+form.addEventListener('submit', addItem);
 
 // FUNCTIONS
+function addItem(e) {
+  e.preventDefault();
+
+  const value = grocery.value;
+  const id = new Date().getTime().toString();
+
+  if (value !== '' && editFlag === false) {
+    console.log('add new item');
+  } else if (value !== '' && editFlag === true) {
+    console.log('update item');
+  } else {
+    console.log('empty value');
+  }
+}
 
 // LOCAL STORAGE
 
