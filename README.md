@@ -259,6 +259,7 @@ function setBackToDefault() {
 
 - #### Clear Items
 - Remove all items when hit the clear button
+- Add event listener
 
 ```js
 // EVENT LISTENERS
@@ -267,8 +268,11 @@ function setBackToDefault() {
 .
 // clear items
 clearBtn.addEventListener('click', clearItems);
-.
-.
+```
+
+- function
+
+```js
 // display alert
 .
 .
@@ -285,4 +289,42 @@ function clearItems() {
   displayAlert('items cleared', 'danger');
   // localStorage.removeItem('list')
 }
+```
+
+##
+
+- #### Edit & Delete Buttons
+- Create const deleteBtn & editBtn inside the addItem function
+
+```js
+function addItem(e) {
+// create innerHTML
+.
+.
+// action button
+const deleteBtn = element.querySelector('.delete-btn');
+deleteBtn.addEventListener('click', deleteItem);
+const editBtn = element.querySelector('.edit-btn');
+editBtn.addEventListener('click', editItem);
+.
+.
+}
+```
+
+- Create both of button functions below clear items function
+
+```js
+// clear items
+.
+.
+// delete function
+function deleteItem() {
+  console.log('item deleted');
+}
+
+// edit function
+function editItem() {
+  console.log('edit item');
+}
+
 ```

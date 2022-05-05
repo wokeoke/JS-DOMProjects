@@ -47,6 +47,11 @@ function addItem(e) {
         </button>
       </div>
     `;
+    // action button
+    const deleteBtn = element.querySelector('.delete-btn');
+    deleteBtn.addEventListener('click', deleteItem);
+    const editBtn = element.querySelector('.edit-btn');
+    editBtn.addEventListener('click', editItem);
     // append child
     list.appendChild(element);
     // display alert
@@ -87,6 +92,16 @@ function clearItems() {
   container.classList.remove('show-container');
   displayAlert('items cleared', 'danger');
   // localStorage.removeItem('list')
+}
+
+// delete function
+function deleteItem() {
+  console.log('item deleted');
+}
+
+// edit function
+function editItem() {
+  console.log('edit item');
 }
 
 // set back to default
