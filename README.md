@@ -172,4 +172,70 @@ if (value && !editFlag) {
 }
 ```
 
----
+##
+
+- #### Add Item
+- Write inside the **if (value && !editFlag)** statement
+
+```js
+if (value && !editFlag) {
+  // create new element
+  const element = document.createElement('article');
+  // add class
+  element.classList.add('grocery-item');
+  // add id
+  const attribute = document.createAttribute('data-id');
+  attribute.value = id;
+  element.setAttributeNode(attribute);
+  // create innerHTML
+  element.innerHTML = `          
+    <p class="title">${value}</p>
+    <div class="btn-container">
+      <button type="button" class="edit-btn">
+        <i class="fas fa-edit"></i>
+      </button>
+      <button type="button" class="delete-btn">
+        <i class="fas fa-trash"></i>
+      </button>
+    </div>
+  `;
+  // append child
+  list.appendChild(element);
+  // display alert
+  displayAlert('item added to the list', 'success');
+  // show container
+  container.classList.add('show-container');
+  // add to local storage
+  addToLocalStorage(id, value);
+  // set back to default
+  setBackToDefault();
+}
+```
+
+- index.html
+- "grocery-list" content moved to app.js to create inner HTML
+
+```html
+<!-- LIST -->
+<div class="grocery-container">
+  <div class="grocery-list"></div>
+</div>
+```
+
+- Create addToLocalStorage & setBackToDefault functions
+
+```js
+// display alert
+.
+.
+// set back to default
+function setBackToDefault() {
+  console.log('set bak to default');
+}
+
+// LOCAL STORAGE
+// add to local storage
+function addToLocalStorage(id, value) {
+  console.log('added to local storage');
+}
+```
