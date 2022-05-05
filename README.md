@@ -80,7 +80,6 @@ grocery-bud
 ##
 
 - #### Select Elements
-- app.js
 
 ```js
 // SELECT ITEMS
@@ -101,7 +100,6 @@ let editId = '';
 ##
 
 - #### Add Item Setup
-- app.js
 
 ```js
 // EDIT OPTION
@@ -131,7 +129,6 @@ function addItem(e) {
 ##
 
 - #### Truthy Shortcut
-- app.js
 - from if (value !== '' && editFlag === false)
   to if (value && !editFlag)
 
@@ -142,6 +139,36 @@ if (value && !editFlag) {
   console.log('update item');
 } else {
   console.log('empty value');
+}
+```
+
+##
+
+- #### Display Alert
+- Create displayAlert function
+
+```js
+// display alert
+function displayAlert(text, action) {
+  alert.textContent = text;
+  alert.classList.add(`alert-${action}`);
+
+  setTimeout(function () {
+    alert.textContent = '';
+    alert.classList.remove(`alert-${action}`);
+  }, 1800);
+}
+```
+
+- Put into **else statement**
+
+```js
+if (value && !editFlag) {
+  console.log('add new item');
+} else if (value && editFlag) {
+  console.log('update item');
+} else {
+  displayAlert('Please enter value', 'danger');
 }
 ```
 
