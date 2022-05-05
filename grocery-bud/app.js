@@ -66,7 +66,7 @@ function addItem(e) {
     editElement.innerHTML = value;
     displayAlert('value changed', 'success');
     // edit local storage
-    // editLocalStorage(editID, value);
+    editLocalStorage(editID, value);
     setBackToDefault();
   } else {
     displayAlert('Please enter value', 'danger');
@@ -95,7 +95,7 @@ function clearItems() {
   }
   container.classList.remove('show-container');
   displayAlert('items cleared', 'danger');
-  // localStorage.removeItem('list')
+  localStorage.removeItem('list');
 }
 
 // delete function
@@ -111,7 +111,7 @@ function deleteItem(e) {
 
   displayAlert('item removed', 'danger');
   // remove from local storage
-  // removeFromLocalStorage(id);
+  removeFromLocalStorage(id);
 }
 
 // edit function
@@ -138,7 +138,13 @@ function setBackToDefault() {
 // LOCAL STORAGE
 // add to local storage
 function addToLocalStorage(id, value) {
-  console.log('added to local storage');
+  const grocery = { id, value };
+  let items = localStorage.getItem('list')
+    ? JSON.parse(localStorage.getItem('list'))
+    : [];
+  items.push(grocery);
+  localStorage.setItem('list', JSON.stringify(items));
+  // console.log('item added to local storage');
 }
 
 // remove from local storage

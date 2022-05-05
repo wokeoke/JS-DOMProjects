@@ -287,7 +287,7 @@ function clearItems() {
   }
   container.classList.remove('show-container');
   displayAlert('items cleared', 'danger');
-  // localStorage.removeItem('list')
+  localStorage.removeItem('list')
 }
 ```
 
@@ -358,7 +358,7 @@ function deleteItem(e) {
 
   displayAlert('item removed', 'danger');
   // remove from local storage
-  // removeFromLocalStorage(id);
+  removeFromLocalStorage(id);
 }
 ```
 
@@ -410,7 +410,7 @@ function editItem(e) {
     editElement.innerHTML = value;
     displayAlert('value changed', 'success');
     // edit local storage
-    // editLocalStorage(editID, value);
+    editLocalStorage(editID, value);
     setBackToDefault();
   } else {
 ```
@@ -425,5 +425,22 @@ function editItem(e) {
 // edit local storage
 function editLocalStorage(id, value) {
   console.log('edit local storage');
+}
+```
+
+##
+
+- #### Add Item to Local Storage
+
+```js
+// add to local storage
+function addToLocalStorage(id, value) {
+  const grocery = { id, value };
+  let items = localStorage.getItem('list')
+    ? JSON.parse(localStorage.getItem('list'))
+    : [];
+  items.push(grocery);
+  localStorage.setItem('list', JSON.stringify(items));
+  // console.log('item added to local storage');
 }
 ```
