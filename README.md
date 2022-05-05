@@ -16,7 +16,7 @@ grocery-bud
 └─ style.css
 ```
 
-###
+##
 
 - #### HTML
 - index.html
@@ -77,7 +77,7 @@ grocery-bud
 </html>
 ```
 
-###
+##
 
 - #### Select Elements
 - app.js
@@ -98,7 +98,7 @@ let editFlag = false;
 let editId = '';
 ```
 
-###
+##
 
 - #### Add Item Setup
 - app.js
@@ -125,6 +125,23 @@ function addItem(e) {
   } else {
     console.log('empty value');
   }
+}
+```
+
+##
+
+- #### Truthy Shortcut
+- app.js
+- from if (value !== '' && editFlag === false)
+  to if (value && !editFlag)
+
+```js
+if (value && !editFlag) {
+  console.log('add new item');
+} else if (value && editFlag) {
+  console.log('update item');
+} else {
+  console.log('empty value');
 }
 ```
 
